@@ -3,7 +3,7 @@ from Scripts.Index import *
 import random
 image = SR()
 image.glInit()
-image.glCreateWindow(1500, 1500)
+image.glCreateWindow(1500,1500)
 image.lookAt((-1,1.765,5), (0,0,0), (0,0.5,0))
 image.glViewPort(0,0,1500,1500)
 image.setFileName("./proyecto.bmp")

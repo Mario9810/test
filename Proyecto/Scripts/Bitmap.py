@@ -2,11 +2,11 @@ import struct
 
 class Bitmap(object):
                 def __char(self, c):
-                    return struct.pack("c", c.encode("ascii"))
+                    return struct.pack("=c", c.encode("ascii"))
                 def ___word(self, c):
-                    return struct.pack("h", c)
+                    return struct.pack("=h", c)
                 def ___dword(self, c):
-                    return struct.pack("l", c)
+                    return struct.pack("=l", c)
                 def __init__(self, Wd, Hd):
                     self.Wd = abs(int(Wd))
                     self.Hd = abs(int(Hd))
@@ -45,7 +45,7 @@ class Bitmap(object):
                     #header
                     archivo.write(self.__char("B"))
                     archivo.write(self.__char("M"))
-                    archivo.write(struct.pack("=l",(14 + 40 + pixelW * pixelH * 3)))
+                    archivo.write(self.___dword(14 + 40 + pixelW * pixelH * 3))
                     archivo.write(self.___dword(0))
                     archivo.write(self.___dword(14 + 40))
 
@@ -55,7 +55,7 @@ class Bitmap(object):
                     archivo.write(self.___word(1))
                     archivo.write(self.___word(24))
                     archivo.write(self.___dword(0))
-                    archivo.write(struct.pack("=l",(pixelW * pixelH * 3)))
+                    archivo.write(self.___dword(pixelW * pixelH * 3))
                     archivo.write(self.___dword(0))
                     archivo.write(self.___dword(0))
                     archivo.write(self.___dword(0))
